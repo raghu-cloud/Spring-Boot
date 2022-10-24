@@ -1,6 +1,8 @@
 package com.main.topic;
 
 import java.util.*;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
 
@@ -36,13 +38,17 @@ public class TopicServices {
 	}
 
 	public void updateTopic(String id, Topic topic) {
-		for (int i = 0; i < topics.size(); i++) {
-			Topic topic1 = topics.get(i);
-			if (topic1.getId().equalsIgnoreCase(id)) {
-				topics.set(i, topic);
-				return;
-			}
-		}
+//		for (int i = 0; i < topics.size(); i++) {
+//			Topic topic1 = topics.get(i);
+//			if (topic1.getId().equalsIgnoreCase(id)) {
+//				topics.set(i, topic);
+//				return;
+//			}
+//		}
+		topics.stream().map(tpc -> {
+			 if(tpc.getId() ==id) topics.set(Integer.parseInt(id),tpc);
+			 return topics;
+		}).close();
 	}
 
 	public void deleteTopicById(String id) {
