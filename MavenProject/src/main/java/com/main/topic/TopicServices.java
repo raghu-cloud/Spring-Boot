@@ -46,9 +46,9 @@ public class TopicServices {
 //			}
 //		}
 		topics.stream().map(tpc -> {
-			 if(tpc.getId() ==id) topics.set(Integer.parseInt(id),tpc);
+			 if(tpc.getId().equalsIgnoreCase(id)) topics.set(Integer.parseInt(id),tpc);
 			 return topics;
-		}).close();
+		});
 	}
 
 	public void deleteTopicById(String id) {
