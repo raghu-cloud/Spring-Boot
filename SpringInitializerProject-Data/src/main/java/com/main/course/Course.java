@@ -7,7 +7,7 @@ import javax.persistence.ManyToOne;
 import com.main.topic.Topic;
 
 @Entity
-public class Course {
+public class Course{
 	
 	@Id
 	private String id;

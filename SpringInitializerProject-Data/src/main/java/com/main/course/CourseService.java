@@ -13,6 +13,8 @@ public class CourseService {
 	@Autowired
 	CourseRepository courseRepository;
 
+
+
 	public List<Course> getAllCourses(String id) {
 		List<Course> courses=new ArrayList<>();
 		courseRepository.findByTopicId(id).forEach(courses::add);
@@ -20,15 +22,16 @@ public class CourseService {
 	}
 
 	public Course getCourseById(String id) {
-		Course result=new Course();
-		Iterator<Course> itarator=courseRepository.findAll().iterator();
-		while(itarator.hasNext()) {
-			Course course=(Course) itarator.next();
-			if(course.getId().equalsIgnoreCase(id)) {
-				result=course;
-			}
-		}
-		return result;
+//		Course result=new Course();
+//		Iterator<Course> itarator=courseRepository.findAll().iterator();
+//		while(itarator.hasNext()) {
+//			Course course=(Course) itarator.next();
+//			if(course.getId().equalsIgnoreCase(id)) {
+//				result=course;
+//			}
+//		}
+//		return result;
+		return courseRepository.existsById(id) ? courseRepository.findById(id).get() : new Course();
 	}
 
 	public void addCourse(Course course) {
@@ -50,11 +53,12 @@ public class CourseService {
 	public void deleAllCourseInsideGivenTopic(String id) {
 		List<Course> courses=new ArrayList<>();
 		courseRepository.findByTopicId(id).forEach(courses::add);
-		for(int i=0;i<courses.size();i++) {
-			Course course=courses.get(i);
-			String courseId=course.getId();
-			courseRepository.deleteById(courseId);
-		}
+//		for(int i=0;i<courses.size();i++) {
+//			Course course=courses.get(i);
+//			String courseId=course.getId();
+//			courseRepository.deleteById(courseId);
+//		}
+		courseRepository.deleteAll(courses);
 	}
 
 	
