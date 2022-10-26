@@ -2,6 +2,7 @@ package com.main.topic;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import java.util.Objects;
 
 @Entity
 public class Topic {
@@ -11,7 +12,32 @@ public class Topic {
 	
 	private String name;
 	private String description;
-	
+
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+
+		Topic topic = (Topic) o;
+
+		return id.equals(topic.id);
+	}
+
+
+	@Override
+	public String toString() {
+		return "Topic{" +
+				"id='" + id + '\'' +
+				", name='" + name + '\'' +
+				", description='" + description + '\'' +
+				'}';
+	}
+	@Override
+	public int hashCode() {
+		return id.hashCode();
+	}
+
 	public Topic() {
 		
 	}
