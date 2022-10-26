@@ -45,8 +45,13 @@ public class TopicServices {
 		topicRepository.save(topic);
 	}
 
-	public void deleteTopicById(String id) {
-		topicRepository.deleteById(id);
+	public String deleteTopicById(String id) {
+		 if(topicRepository.existsById(id)){
+			 topicRepository.deleteById(id);
+			 return "deleted Successfull";
+		 }
+		 else return "Topic not present in DB";
+		
 	}
 
 	public void deleteAllTopics() {
