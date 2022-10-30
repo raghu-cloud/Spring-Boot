@@ -29,13 +29,13 @@ public class CourseController {
 	}
 	
 	@RequestMapping(method = RequestMethod.POST, value="/topics/{id}/addCourse")
-	public void addCourse(@PathVariable Integer id, @RequestBody Course course) {
+	public void addCourse(@PathVariable String id, @RequestBody Course course) {
 		course.setTopic(new Topic(id,"",""));
 		courseService.addCourse(course);
 	}
 	
 	@RequestMapping(method = RequestMethod.PUT, value="/topics/{topicId}/updateCourse/{id}")
-	public void updateCourse(@RequestBody Course course, @PathVariable Integer topicId, @PathVariable String id) {
+	public void updateCourse(@RequestBody Course course, @PathVariable String topicId, @PathVariable String id) {
 		course.setTopic(new Topic(topicId,"",""));
 		courseService.updateCourse(course);
 	}

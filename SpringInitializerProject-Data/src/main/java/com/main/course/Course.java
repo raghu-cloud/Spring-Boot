@@ -10,7 +10,7 @@ import com.main.topic.Topic;
 public class Course{
 	
 	@Id
-	private Integer id;
+	private String id;
 	private String name;
 	private String description;
 	
@@ -21,7 +21,7 @@ public class Course{
 		
 	}
 	
-	public Course(Integer id, String name, String description, Integer topicId) {
+	public Course(String id, String name, String description, String topicId) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -29,11 +29,11 @@ public class Course{
 		this.topic=new Topic(topicId,"","");
 	}
 
-	public Integer getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 
