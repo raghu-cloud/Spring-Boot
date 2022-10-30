@@ -2,13 +2,12 @@ package com.main.topic;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import java.util.Objects;
 
 @Entity
 public class Topic {
 	
 	@Id
-	private String id;
+	private Integer id;
 	
 	private String name;
 	private String description;
@@ -42,18 +41,18 @@ public class Topic {
 		
 	}
 
-	public Topic(String id, String name, String description) {
+	public Topic(Integer id, String name, String description) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.description = description;
 	}
 
-	public String getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(String id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
