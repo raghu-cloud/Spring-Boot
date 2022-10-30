@@ -19,34 +19,34 @@ public class CourseController {
 	
 	
 	@RequestMapping("/topics/{id}/courses")
-	public List<Course> getAllCourses(@PathVariable String id) {
+	public List<Course> getAllCourses(@PathVariable int id) {
 		return courseService.getAllCourses(id);
 	}
 	
 	@RequestMapping("/courses/{id}")
-	public Course getCourseById(@PathVariable String id) {
+	public Course getCourseById(@PathVariable int id) {
 		return courseService.getCourseById(id);
 	}
 	
 	@RequestMapping(method = RequestMethod.POST, value="/topics/{id}/addCourse")
-	public void addCourse(@PathVariable String id, @RequestBody Course course) {
+	public void addCourse(@PathVariable int id, @RequestBody Course course) {
 		course.setTopic(new Topic(id,"",""));
 		courseService.addCourse(course);
 	}
 	
 	@RequestMapping(method = RequestMethod.PUT, value="/topics/{topicId}/updateCourse/{id}")
-	public void updateCourse(@RequestBody Course course, @PathVariable String topicId, @PathVariable String id) {
+	public void updateCourse(@RequestBody Course course, @PathVariable int topicId, @PathVariable int id) {
 		course.setTopic(new Topic(topicId,"",""));
 		courseService.updateCourse(course);
 	}
 	
 	@RequestMapping(method = RequestMethod.DELETE, value="/deleteCourse/{id}")
-	public void deleteCourseById(@PathVariable String id) {
+	public void deleteCourseById(@PathVariable int id) {
 		courseService.deleteCourseById(id);
 	}
 	
 	@RequestMapping(method = RequestMethod.DELETE, value="/topics/{id}/deleteAllCourse")
-	public void deleteAllCourseInsideGivenTopic(@PathVariable String id) {
+	public void deleteAllCourseInsideGivenTopic(@PathVariable int id) {
 		courseService.deleAllCourseInsideGivenTopic(id);
 	}
 	

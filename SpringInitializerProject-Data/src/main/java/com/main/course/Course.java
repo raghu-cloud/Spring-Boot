@@ -1,6 +1,7 @@
 package com.main.course;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
@@ -10,7 +11,8 @@ import com.main.topic.Topic;
 public class Course{
 	
 	@Id
-	private String id;
+	@GeneratedValue
+	private int id;
 	private String name;
 	private String description;
 	
@@ -21,7 +23,7 @@ public class Course{
 		
 	}
 	
-	public Course(String id, String name, String description, String topicId) {
+	public Course(int id, String name, String description, int topicId) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -29,11 +31,11 @@ public class Course{
 		this.topic=new Topic(topicId,"","");
 	}
 
-	public String getId() {
+	public int getId() {
 		return id;
 	}
 
-	public void setId(String id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 

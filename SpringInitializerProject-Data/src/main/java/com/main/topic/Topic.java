@@ -1,17 +1,18 @@
 package com.main.topic;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 @Entity
 public class Topic {
-	
+
 	@Id
-	private String id;
+	@GeneratedValue
+	private int id;
 	
 	private String name;
 	private String description;
-
 
 	@Override
 	public boolean equals(Object o) {
@@ -20,39 +21,39 @@ public class Topic {
 
 		Topic topic = (Topic) o;
 
-		return id.equals(topic.id);
+		return id == topic.id;
 	}
-
 
 	@Override
 	public String toString() {
 		return "Topic{" +
-				"id='" + id + '\'' +
+				"id=" + id +
 				", name='" + name + '\'' +
 				", description='" + description + '\'' +
 				'}';
 	}
+
 	@Override
 	public int hashCode() {
-		return id.hashCode();
+		return id;
 	}
 
 	public Topic() {
 		
 	}
 
-	public Topic(String id, String name, String description) {
+	public Topic(int id, String name, String description) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.description = description;
 	}
 
-	public String getId() {
+	public int getId() {
 		return id;
 	}
 
-	public void setId(String id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 

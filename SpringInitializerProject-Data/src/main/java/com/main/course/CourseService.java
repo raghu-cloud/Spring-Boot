@@ -15,13 +15,13 @@ public class CourseService {
 
 
 
-	public List<Course> getAllCourses(String id) {
+	public List<Course> getAllCourses(int id) {
 		List<Course> courses=new ArrayList<>();
 		courseRepository.findByTopicId(id).forEach(courses::add);
 		return courses;
 	}
 
-	public Course getCourseById(String id) {
+	public Course getCourseById(int id) {
 //		Course result=new Course();
 //		Iterator<Course> itarator=courseRepository.findAll().iterator();
 //		while(itarator.hasNext()) {
@@ -42,7 +42,7 @@ public class CourseService {
 		courseRepository.save(course);
 	}
 
-	public void deleteCourseById(String courseId) {
+	public void deleteCourseById(int courseId) {
 		courseRepository.deleteById(courseId);
 	}
 
@@ -50,7 +50,7 @@ public class CourseService {
 		courseRepository.deleteAll();
 	}
 
-	public void deleAllCourseInsideGivenTopic(String id) {
+	public void deleAllCourseInsideGivenTopic(int id) {
 		List<Course> courses=new ArrayList<>();
 		courseRepository.findByTopicId(id).forEach(courses::add);
 //		for(int i=0;i<courses.size();i++) {

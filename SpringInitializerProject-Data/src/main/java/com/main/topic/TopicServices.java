@@ -24,7 +24,7 @@ public class TopicServices {
 		return topics;
 	}
 
-	public Topic getTopicById(String id) {
+	public Topic getTopicById(int id) {
 //		Topic result=new Topic();
 //		Iterator itr=topicRepository.findAll().iterator();
 //		while(itr.hasNext()) {
@@ -41,7 +41,7 @@ public class TopicServices {
 		return topicRepository.save(topic);
 	}
 
-	public String  updateTopic(String id, Topic topic) {
+	public String  updateTopic(int id, Topic topic) {
 		List<Topic> topics=new ArrayList<>();
 		topicRepository.findAll().forEach(topics::add);
 		StringBuilder res=new StringBuilder();
@@ -55,7 +55,7 @@ public class TopicServices {
 		return res.toString();
 	}
 
-	public String deleteTopicById(String id) {
+	public String deleteTopicById(int id) {
 		 if(topicRepository.existsById(id)){
 			 topicRepository.deleteById(id);
 			 return "deleted Successfull";
