@@ -69,6 +69,10 @@ public class TopicServices {
 	public List<Topic> topicsByNameLike(String name){
 		return topicRepository.findByNameLike(name+"%");
 	}
+
+	public List<Topic> topicsByNameStartingWtih(String name){
+		return topicRepository.findByNameStartingWith(name);
+	}
 	
 
 }
