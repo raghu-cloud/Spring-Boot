@@ -42,17 +42,11 @@ public class TopicServices {
 	}
 
 	public String  updateTopic(int id, Topic topic) {
-		List<Topic> topics=new ArrayList<>();
-		topicRepository.findAll().forEach(topics::add);
-		StringBuilder res=new StringBuilder();
-		int indexOfOldTpc = topics.indexOf(topicRepository.existsById(id) ? topicRepository.findById(id).get(): null);
-		if(indexOfOldTpc !=-1){
-			topics.set(indexOfOldTpc, topic);
-			res.append("Update success") ;
-		}else res.append("update failed");
-		topicRepository.deleteAll();
-		topicRepository.saveAll(topics);
-		return res.toString();
+		Topic exsTopic = topicRepository.findById(id).orElse(null);
+		exsTopic.setName(topic.getName());
+		exsTopic.setDescription(topic.getDescription());
+		topicRepository.save(exsTopic);
+		return exsTopic!=null ? "updated successfull" : "topic not found";
 	}
 
 	public String deleteTopicById(int id) {
