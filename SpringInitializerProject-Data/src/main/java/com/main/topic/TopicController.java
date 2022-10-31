@@ -51,4 +51,9 @@ public class TopicController {
 		return topicService.topicsByName(name);
 	}
 
+	@RequestMapping(method = RequestMethod.GET,consumes = MediaType.APPLICATION_JSON_VALUE, value = "/topicsByNameLike/{name}")
+	public List<Topic> topicsByNameLike(@PathVariable("name") String name){
+		return topicService.topicsByNameLike(name);
+	}
+
 }
