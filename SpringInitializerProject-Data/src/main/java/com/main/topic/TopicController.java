@@ -46,4 +46,9 @@ public class TopicController {
 		topicService.deleteAllTopics();
 	}
 
+	@RequestMapping(method = RequestMethod.GET, consumes = MediaType.APPLICATION_JSON_VALUE, value="/topicsByName/{name}")
+	public List<Topic> topicByName(@PathVariable("name") String name){
+		return topicService.topicsByName(name);
+	}
+
 }

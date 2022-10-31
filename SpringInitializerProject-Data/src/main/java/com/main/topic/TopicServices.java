@@ -61,6 +61,10 @@ public class TopicServices {
 	public void deleteAllTopics() {
 		topicRepository.deleteAll();
 	}
+
+	public List<Topic> topicsByName(String name){
+		return topicRepository.findByName(name);
+	}
 	
 
 }
