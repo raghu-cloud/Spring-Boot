@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.print.attribute.standard.Media;
+
 @RestController
 public class TopicController {
 
@@ -49,6 +51,16 @@ public class TopicController {
 	@RequestMapping(method = RequestMethod.GET, consumes = MediaType.APPLICATION_JSON_VALUE, value="/topicsByName/{name}")
 	public List<Topic> topicByName(@PathVariable("name") String name){
 		return topicService.topicsByName(name);
+	}
+
+	@RequestMapping(method = RequestMethod.GET,consumes = MediaType.APPLICATION_JSON_VALUE, value = "/topicsByNameLike/{name}")
+	public List<Topic> topicsByNameLike(@PathVariable("name") String name){
+		return topicService.topicsByNameLike(name);
+	}
+
+	@RequestMapping(method = RequestMethod.GET, consumes = MediaType.APPLICATION_JSON_VALUE, value = "/topicsByNameStartingWith/{name}")
+	public List<Topic> topicsByNameStartingWith(@PathVariable("name") String name){
+		return topicService.topicsByNameStartingWtih(name);
 	}
 
 }
