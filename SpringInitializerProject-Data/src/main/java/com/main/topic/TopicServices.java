@@ -25,16 +25,17 @@ public class TopicServices {
 	}
 
 	public Topic getTopicById(int id) {
-//		Topic result=new Topic();
-//		Iterator itr=topicRepository.findAll().iterator();
-//		while(itr.hasNext()) {
-//			Topic t=(Topic) itr.next();
-//			if(t.getId().equalsIgnoreCase(id))
-//				result=t;
-//		}
-//		return result;
-		if(topicRepository.findById(id).isPresent()) return topicRepository.findById(id).get();
-		else return new Topic();
+/*		Topic result=new Topic();
+		Iterator itr=topicRepository.findAll().iterator();
+		while(itr.hasNext()) {
+			Topic t=(Topic) itr.next();
+			if(t.getId().equalsIgnoreCase(id))
+				result=t;
+		}
+		return result;*/
+		/*if(topicRepository.findById(id).isPresent()) return topicRepository.findById(id).get();
+		else return new Topic();*/
+		return topicRepository.getTopicByIdNativeQuery(id);
 	}
 
 	public Topic addTopic(Topic topic) {

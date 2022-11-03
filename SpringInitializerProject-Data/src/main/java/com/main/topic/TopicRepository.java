@@ -25,4 +25,7 @@ public interface TopicRepository extends CrudRepository<Topic, Integer> {
     @Query("update Topic t set t.name = :name, t.description = :desc where t.id = :id")
     public int updateTopic(@Param("id") int id, @Param("name") String name, @Param("desc") String desc);
 
+    @Query(value="select * from Topic where id = :id", nativeQuery = true)
+    public Topic getTopicByIdNativeQuery(@Param("id")int id);
+
 }
