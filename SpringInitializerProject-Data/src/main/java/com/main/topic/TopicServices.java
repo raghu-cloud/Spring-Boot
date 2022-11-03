@@ -42,11 +42,14 @@ public class TopicServices {
 	}
 
 	public String  updateTopic(int id, Topic topic) {
-		Topic exsTopic = topicRepository.findById(id).orElse(null);
+		/*Topic exsTopic = topicRepository.findById(id).orElse(null);
 		exsTopic.setName(topic.getName());
 		exsTopic.setDescription(topic.getDescription());
 		topicRepository.save(exsTopic);
-		return exsTopic!=null ? "updated successfull" : "topic not found";
+		return exsTopic!=null ? "updated successfull" : "topic not found";*/
+		int i=topicRepository.updateTopic(id,topic.getName(),topic.getDescription());
+		//returns 1 for successfull update and 0 for non successfull update
+		return i==1?"Update Successfull":"Did not found Id";
 	}
 
 	public String deleteTopicById(int id) {

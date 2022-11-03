@@ -1,8 +1,10 @@
 package com.main.topic;
 
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -16,5 +18,11 @@ public interface TopicRepository extends CrudRepository<Topic, Integer> {
 
     @Query("select t from Topic t")
     public List<Topic> getTopics();
+
+    //use @modifying annotation for update/delete based functionalities
+    @Modifying
+    @Transactional
+    @Query("update Topic t set t.name = :name, t.description = :desc where t.id = :id")
+    public int updateTopic(@Param("id") int id, @Param("name") String name, @Param("desc") String desc);
 
 }
