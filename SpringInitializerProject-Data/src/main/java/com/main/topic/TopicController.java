@@ -63,4 +63,7 @@ public class TopicController {
 		return topicService.topicsByNameStartingWtih(name);
 	}
 
+	@RequestMapping(method = RequestMethod.GET, consumes = MediaType.APPLICATION_JSON_VALUE, value="/topicsByQuery")
+	public List<Topic> getTopicsByQuery(){ return topicService.getTopicsByQuery();}
+
 }

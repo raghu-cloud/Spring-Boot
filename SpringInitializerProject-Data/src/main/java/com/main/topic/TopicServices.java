@@ -73,6 +73,8 @@ public class TopicServices {
 	public List<Topic> topicsByNameStartingWtih(String name){
 		return topicRepository.findByNameStartingWith(name);
 	}
+
+	public List<Topic> getTopicsByQuery(){return topicRepository.getTopics();}
 	
 
 }

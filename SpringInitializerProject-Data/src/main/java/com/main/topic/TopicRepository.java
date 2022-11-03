@@ -1,6 +1,8 @@
 package com.main.topic;
 
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 
@@ -12,7 +14,7 @@ public interface TopicRepository extends CrudRepository<Topic, Integer> {
 
     public List<Topic> findByNameStartingWith(String name);
 
-//    @Query("from Topic t where topicId=:id")
-//+    public void getTopicById(@Param("id") String id);
+    @Query("select t from Topic t")
+    public List<Topic> getTopics();
 
 }
