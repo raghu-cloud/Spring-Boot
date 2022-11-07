@@ -38,8 +38,9 @@ public class CourseService {
 		courseRepository.save(course);
 	}
 
-	public void updateCourse(Course course) {
-		courseRepository.save(course);
+	public String updateCourse(int id,int topicId,Course course) {
+		int response = courseRepository.updateCourseByTopicID(id,topicId,course.getName(),course.getDescription());
+		return response==1?"Updated-Successfull":"Did not found course";
 	}
 
 	public void deleteCourseById(int courseId) {
